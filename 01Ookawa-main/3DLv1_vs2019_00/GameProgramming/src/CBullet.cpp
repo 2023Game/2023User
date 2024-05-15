@@ -2,7 +2,8 @@
 
 //幅と奥行きの設定
 //Set(幅, 奥行)
-void CBullet::Set(float w, float d) {
+void CBullet::Set(float w, float d) 
+{
 	//スケール設定
 	mScale = CVector(1.0f, 1.0f, 1.0f);
 	//三角形の頂点設定→ヒント 3
@@ -12,7 +13,8 @@ void CBullet::Set(float w, float d) {
 }
 
 //更新
-void CBullet::Update() {
+void CBullet::Update()
+{
 	//生存時間の判定
 	if (mLife-- > 0) {
 		CTransform::Update();
@@ -26,14 +28,17 @@ void CBullet::Update() {
 }
 
 //描画
-void CBullet::Render() {
+void CBullet::Render() 
+{
 	//DIFFUSE黄色設定
 	float c[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, c);
-	//三角形描画→ヒント 12
+	//三角形描画
 	mT.Render(mMatrix);
+	mCollider1.Render();
 }
 
 CBullet::CBullet()
 	: mLife(50)
+	, mCollider1(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.1f)
 {}
