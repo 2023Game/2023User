@@ -30,11 +30,6 @@ CTexture* CApplication::Texture()
 	return &mTexture;
 }
 
-CTaskManager CApplication::mTaskManager;
-CTaskManager* CApplication::TaskManager()
-{
-	return &mTaskManager;
-}
 
 
 void CApplication::Start()
@@ -64,7 +59,7 @@ void CApplication::Start()
 void CApplication::Update()
 {
 	//タスクマネージャの更新
-	mTaskManager.Update();
+	CTaskManager::Instance()->Update();
 
 	CVector v0, v1, v2, n;
 	n.Set(0.0f, 1.0f, 0.0f);
@@ -120,9 +115,11 @@ void CApplication::Update()
 
 	
 	//タスクリストの削除
-	mTaskManager.Delete();
+	CTaskManager::Instance()->Delete();
 	//タスクマネージャの描画
-	mTaskManager.Render();
+	CTaskManager::Instance()->Render();
+
+	CCollisionManager::Instance()->Render();
 }
 
 
