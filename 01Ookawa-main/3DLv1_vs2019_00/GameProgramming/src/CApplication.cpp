@@ -61,6 +61,9 @@ void CApplication::Update()
 	//タスクマネージャの更新
 	CTaskManager::Instance()->Update();
 
+	//コリジョンマネージャの衝突処理
+	CCollisionManager::Instance()->Collision();
+
 	CVector v0, v1, v2, n;
 	n.Set(0.0f, 1.0f, 0.0f);
 	v0.Set(0.0f, 0.0f, 0.5f);

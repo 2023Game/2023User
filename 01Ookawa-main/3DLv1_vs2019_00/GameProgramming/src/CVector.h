@@ -6,6 +6,8 @@
 class CVector
 {
 public:
+	//ƒxƒNƒgƒ‹‚Ì’·‚³‚ð•Ô‚·
+	float Length() const;
 	CVector operator*(const CMatrix& m);
 	CVector operator-(const CVector& v) const;
 	CVector operator+(const CVector& v) const;

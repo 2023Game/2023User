@@ -1,4 +1,5 @@
 #include "CVector.h"
+#include "math.h"
 
 CVector::CVector()
 	: mX(0.0f)
@@ -56,3 +57,9 @@ CVector CVector::operator*(const CMatrix& m)
 	);
 }
 
+//ƒxƒNƒgƒ‹‚Ì’·‚³‚ğ•Ô‚·
+float CVector::Length() const 
+{
+	//sqrtŠÖ”‚Å•½•ûª‚ğ•Ô‚·
+	return sqrtf(mX * mX + mY * mY + mZ * mZ);
+}
